@@ -619,6 +619,7 @@ ENTER(0x160);
     if (!tmp || !tmp[1]) return 0;
     if (!P->cmd) {
        num = tmp - S;
+       if (num >= sizeof(raw)) num = sizeof(raw) - 1;
        memcpy(raw, S, num);
        raw[num] = '\0';
        escape_str(buf, raw, sizeof(buf));

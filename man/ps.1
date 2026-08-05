@@ -836,7 +836,15 @@ W	paging (not valid since Linux 2.6)
 X	dead (should never be seen)
 Z	T{
 defunct (\[lq]zombie\[rq]) process,
-terminated but not reaped by its parent
+terminated but not reaped by its parent.
+Also shown for a still\-running multi\-threaded process
+whose main thread has exited:
+such a process cannot be reaped until all of its threads
+have exited, and can be recognized by the
+.B l
+flag and an
+.B nlwp
+value greater than 1
 T}
 .TE
 .RE

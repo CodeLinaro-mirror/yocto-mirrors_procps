@@ -406,7 +406,7 @@ static int ReadSetting(const char *restrict const name)
 			rc = EXIT_FAILURE;
 			break;
 		case EIO:	    /* Ignore stable_secret below /proc/sys/net/ipv6/conf */
-			rc = EXIT_FAILURE;
+			rc = EXIT_SUCCESS;
 			break;
 		default:
 			warn(_("reading key \"%s\""), outname);
@@ -458,7 +458,7 @@ static int ReadSetting(const char *restrict const name)
 					goto out;
 				}
 			case EIO:	    /* Ignore stable_secret below /proc/sys/net/ipv6/conf */
-				rc = EXIT_FAILURE;
+				rc = EXIT_SUCCESS;
 				break;
 			default:
 				warnx(_("reading key \"%s\""), outname);

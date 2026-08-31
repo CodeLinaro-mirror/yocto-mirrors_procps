@@ -1,3 +1,7 @@
+procps-ng-NEXT
+---------------
+  * build: add libpthread if needed                        issue #434
+
 procps-ng-4.0.7
 ---------------
   * library

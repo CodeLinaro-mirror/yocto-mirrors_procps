@@ -419,6 +419,19 @@ else
 fi
 AC_SUBST([DL_LIB])
 
+# pthread_sigmask was in libpthread and moved into glibc in 2.2.5
+# Check for pthread_sigmask without modifying the global LIBS variable
+AC_SEARCH_LIBS([pthread_sigmask], [pthread])
+AS_IF([test "$ac_cv_search_pthread_sigmask" = "none required"], [
+    PTHREAD_LIB=""
+  ], [test "$ac_cv_search_pthread_sigmask" != "no"], [
+    PTHREAD_LIB="$ac_cv_search_pthread_sigmask"
+  ], [
+    AC_MSG_ERROR([pthread_sigmask is required but not found])
+])
+AC_SUBST([PTHREAD_LIB])
+
+
 AC_ARG_ENABLE([w-from],
   AS_HELP_STRING([--enable-w-from], [enable w from field by default]),
   [enable_w_from=$enableval], [enable_w_from=no]

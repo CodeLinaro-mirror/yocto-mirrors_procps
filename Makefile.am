@@ -235,7 +235,7 @@ src_top_top_SOURCES += local/strverscmp.c
 endif
 
 src_top_top_CFLAGS = @NCURSES_CFLAGS@
-src_top_top_LDADD = $(LDADD) @NCURSES_LIBS@ $(DL_LIB)
+src_top_top_LDADD = $(LDADD) @NCURSES_LIBS@ $(DL_LIB) $(PTHREAD_LIB)
 endif
 
 if BUILD_SKILL

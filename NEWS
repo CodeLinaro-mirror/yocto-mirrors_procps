@@ -1,6 +1,7 @@
 procps-ng-NEXT
 ---------------
   * build: add libpthread if needed                        issue #434
+  * sysctl: Really ignore stable_secret                    issue #308
 
 procps-ng-4.0.7
 ---------------

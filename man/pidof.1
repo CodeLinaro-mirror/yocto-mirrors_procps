@@ -34,9 +34,11 @@ with names matching
 to the standard output stream.
 .SH OPTIONS
 .IP \fB\-c\fP
-Only return process ids that are running with the same root directory.
-This option is ignored for non-root users, as they will be unable to check
-the current root directory of processes they do not own.
+Report only pids using the same root directory as
+.BR pidof .
+Ignored for non-root users,
+who are unable to determine the root directory of processes
+they do not own.
 .IP "\fB-o\fP \fIomitpid\fP"
 Tells \fBpidof\fP to omit processes with that process id. The special
 pid \fB%PPID\fP can be used to name the parent process of the \fBpidof\fP

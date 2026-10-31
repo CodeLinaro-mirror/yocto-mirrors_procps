@@ -14,19 +14,16 @@
 .SH NAME
 pidof \- find the process ID of a running program
 .SH SYNOPSIS
-.B pidof
-.RB [ \-s ]
-.RB [ \-c ]
-.RB [ \-q ]
-.RB [ \-w ]
-.RB [ \-x ]
+.SY pidof
+.RB [ \-cqstwx ]
 .RB [ \-o
-.IR omitpid [,.\|.\|.\&]]
-\&.\|.\|.\&
-.RB [ \-t ]
+.IR omitpid [\c
+.BR , .\|.\|.\&]]
 .RB [ \-S
 .IR separator ]
-.IR program " .\|.\|."
+.I program
+\&.\|.\|.
+.YS
 .SH DESCRIPTION
 .B Pidof
 finds the process id's (pids) of the named programs. It prints those

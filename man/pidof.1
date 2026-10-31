@@ -33,26 +33,18 @@ with names matching
 .I program
 to the standard output stream.
 .SH OPTIONS
-.IP \fB\-s\fP
-Single shot - this instructs the program to only return one \fIpid\fP.
 .IP \fB\-c\fP
 Only return process ids that are running with the same root directory.
 This option is ignored for non-root users, as they will be unable to check
 the current root directory of processes they do not own.
-.IP \fB\-q\fP
-Quiet mode, suppress any output and only sets the exit status accordingly.
-.IP \fB\-w\fP
-Show also processes that do not have visible command line (e.g. kernel
-worker threads).
-.IP \fB\-x\fP
-Scripts too - this causes the program to also return process id's of
-shells running the named scripts.
 .IP "\fB-o\fP \fIomitpid\fP"
 Tells \fBpidof\fP to omit processes with that process id. The special
 pid \fB%PPID\fP can be used to name the parent process of the \fBpidof\fP
 program, in other words the calling shell or shell script.
-.IP \fB\-t\fP
-Shows all thread ids instead of pids.
+.IP \fB\-q\fP
+Quiet mode, suppress any output and only sets the exit status accordingly.
+.IP \fB\-s\fP
+Single shot - this instructs the program to only return one \fIpid\fP.
 .IP "\fB\-S\fP \fIseparator\fP"
 Use \fIseparator\fP as a separator put between pids.
 Used only when more than one pids are printed for the program.
@@ -61,6 +53,14 @@ by the null byte \fI\[aq]\[rs]0\[aq]\fR.
 The \fB\-d\fR option is an alias for this option for sysvinit
 .B pidof
 compatibility.
+.IP \fB\-t\fP
+Shows all thread ids instead of pids.
+.IP \fB\-w\fP
+Show also processes that do not have visible command line (e.g. kernel
+worker threads).
+.IP \fB\-x\fP
+Scripts too - this causes the program to also return process id's of
+shells running the named scripts.
 .SH "EXIT STATUS"
 .TP
 .B 0

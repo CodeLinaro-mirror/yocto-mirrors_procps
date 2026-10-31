@@ -33,13 +33,16 @@ with names matching
 .I program
 to the standard output stream.
 .SH OPTIONS
-.IP \fB\-c\fP
+.TP
+.B \-c
 Report only pids using the same root directory as
 .BR pidof .
 Ignored for non-root users,
 who are unable to determine the root directory of processes
 they do not own.
-.IP "\fB-o\fP \fIomit-pid\fP[\fB,\fP.\|.\|.]"
+.TP
+.BI \-o " omit-pid\c"
+.RB [ , .\|.\|.]
 Do not report pids matching any
 .I omit-pid.
 .B Pidof
@@ -56,13 +59,16 @@ Specifying
 .B \-o
 more than once supplements the list of
 .I omit-pids.
-.IP \fB\-q\fP
+.TP
+.B \-q
 Operate quietly,
 suppressing output.
 See \[lq]EXIT STATUS\[rq] below.
-.IP \fB\-s\fP
+.TP
+.B \-s
 Report only a single matching pid.
-.IP "\fB\-S\fP \fIseparator\fP"
+.TP
+.BI \-S " separator"
 Use \fIseparator\fP as a separator put between pids.
 Used only when more than one pids are printed for the program.
 If \fIseparator\fR is \[aq]\[aq] then pids are separated
@@ -70,12 +76,15 @@ by the null byte \fI\[aq]\[rs]0\[aq]\fR.
 The \fB\-d\fR option is an alias for this option for sysvinit
 .B pidof
 compatibility.
-.IP \fB\-t\fP
+.TP
+.B \-t
 Report thread identifiers instead of pids.
-.IP \fB\-w\fP
+.TP
+.B \-w
 Report processes that lack a visible command line,
 such as kernel worker threads.
-.IP \fB\-x\fP
+.TP
+.B \-x
 Report pids of shells running scripts named
 .I program.
 .SH "EXIT STATUS"

@@ -86,11 +86,17 @@ At least one program was found with the requested name.
 .B 1
 No program was found with the requested name.
 .SH BUGS
-When using the \fB\-x\fP option,
 .B pidof
-only has a simple method for detecting scripts and will miss scripts that,
-for example, use env. This limitation is due to how the scripts look in
-the proc filesystem.
+uses a simple method to match script names when the
+.B \-x
+option is specified,
+missing scripts that,
+for example,
+use
+.BR env (1).
+This limitation arises from how scripts appear in the
+.I /proc
+file system.
 .SH SEE ALSO
 .BR pgrep (1),
 .BR pkill (1)

@@ -17,7 +17,7 @@ pidof \- find the process ID of a running program
 .SY pidof
 .RB [ \-cqstwx ]
 .RB [ \-o
-.IR omitpid [\c
+.IR omit-pid [\c
 .BR , .\|.\|.\&]]
 .RB [ \-S
 .IR separator ]
@@ -39,10 +39,16 @@ Report only pids using the same root directory as
 Ignored for non-root users,
 who are unable to determine the root directory of processes
 they do not own.
-.IP "\fB-o\fP \fIomitpid\fP"
-Tells \fBpidof\fP to omit processes with that process id. The special
-pid \fB%PPID\fP can be used to name the parent process of the \fBpidof\fP
-program, in other words the calling shell or shell script.
+.IP "\fB-o\fP \fIomit-pid\fP[\fB,\fP.\|.\|.]"
+Do not report pids matching any
+.I omit-pid.
+.B Pidof
+interprets an
+.I omit-pid
+of
+.B %PPID
+as its parent process,
+in other words the calling shell or shell script.
 .IP \fB\-q\fP
 Quiet mode, suppress any output and only sets the exit status accordingly.
 .IP \fB\-s\fP

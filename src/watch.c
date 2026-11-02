@@ -249,21 +249,26 @@ static uf8 process_ansi_color_escape_sequence(char **const escape_sequence) {
 	// process SGR ANSI color escape sequence
 	// Eg 8-bit
 	// 38;5;⟨n⟩  (set fg color to n)
+	// 38:5:⟨n⟩  (set fg color to n) ITU T.416
 	// 48;5;⟨n⟩  (set bg color to n)
+	// 48:5:⟨n⟩  (set bg color to n) ITU T.416
 	//
 	// Eg 24-bit (not yet implemented)
 	// ESC[ 38;2;⟨r⟩;⟨g⟩;⟨b⟩ m Select RGB foreground color
 	// ESC[ 48;2;⟨r⟩;⟨g⟩;⟨b⟩ m Select RGB background color
+        char separator;
 
 	if (!escape_sequence || !*escape_sequence)
 		return 0; /* avoid NULLPTR dereference, return "not understood" */
 
-	if ((*escape_sequence)[0] != ';')
+	if ((*escape_sequence)[0] != ';' && (*escape_sequence)[0] != ':')
 		return 0; /* not understood */
+        else
+		separator = (*escape_sequence)[0];
 
 	if ((*escape_sequence)[1] == '5') {
 		// 8 bit! ANSI specifies a predefined set of 256 colors here.
-		if ((*escape_sequence)[2] != ';')
+		if ((*escape_sequence)[2] != separator)
 			return 0; /* not understood */
 		long num = strtol((*escape_sequence) + 3, escape_sequence, 10);
 		if (num >= 0 && num <= 7) {
@@ -404,7 +409,7 @@ static void process_ansi(FILE * fp)
 			buf[i] = '\0';
 			break;
 		}
-		if ((c < '0' || c > '9') && c != ';') {
+		if ((c < '0' || c > '9') && c != ';' && c != ':') {
 			return;
 		}
 		assert(c >= 0 && c <= SCHAR_MAX);

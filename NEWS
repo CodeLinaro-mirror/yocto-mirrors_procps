@@ -12,6 +12,7 @@ procps-ng-NEXT
   * sysctl: Really ignore stable_secret                    issue #308
   * top: summary area 'Swap' line can be turned off        issue #436
   * top: static 3 sec memory update delay eliminated       issue #440
+  * watch: interpret ITU T.416 color sequence              issue #444
 
 procps-ng-4.0.7
 ---------------

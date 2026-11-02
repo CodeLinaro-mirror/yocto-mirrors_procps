@@ -231,8 +231,11 @@ static void hg_states_one_node(struct node_hg_states *node, const char *name)
 		if (memcmp(hg->d_name, "hugepages-", 10))
 			continue;
 
-		node->state = realloc(node->state,
+		struct hg_state *tmp = realloc(node->state,
 					sizeof(struct hg_state) * (node->nr_hg_state + 1));
+		if (!tmp)
+			break;
+		node->state = tmp;
 		state = &node->state[node->nr_hg_state];
 		node->nr_hg_state++;
 
@@ -268,8 +271,11 @@ static void hg_states_new(struct nodes_hg_states *nodes)
 		if ((dirent->d_type != DT_DIR) || memcmp(dirent->d_name, "node", 4))
 			continue;
 
-		nodes->nodes = realloc(nodes->nodes,
+		struct node_hg_states *tmp = realloc(nodes->nodes,
 					 sizeof(struct node_hg_states) * (nodes->nr_nodes + 1));
+		if (!tmp)
+			break;
+		nodes->nodes = tmp;
 		node = &nodes->nodes[nodes->nr_nodes];
 		nodes->nr_nodes++;
 

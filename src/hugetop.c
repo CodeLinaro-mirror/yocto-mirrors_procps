@@ -201,7 +201,11 @@ static int hg_state_cmp(const void *p1, const void *p2)
 	const struct hg_state *state1 = p1;
 	const struct hg_state *state2 = p2;
 
-	return state1->size > state2->size;
+	if (state1->size < state2->size)
+		return -1;
+	if (state1->size > state2->size)
+		return 1;
+	return 0;
 }
 
 static void hg_states_one_node(struct node_hg_states *node, const char *name)

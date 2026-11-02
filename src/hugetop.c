@@ -342,10 +342,15 @@ static void print_summary(void)
 		}
 	} else {
 		/* merge node[1-n] into node[0] */
+		if (nodes.nr_nodes == 0) {
+			hg_states_free(&nodes);
+			return;
+		}
 		node0 = &nodes.nodes[0];
 		for (unsigned int n = 1; n < nodes.nr_nodes; n++) {
 			node = &nodes.nodes[n];
-			for (unsigned int i = 0; i < node->nr_hg_state; i++) {
+			unsigned int count = (node->nr_hg_state < node0->nr_hg_state) ? node->nr_hg_state : node0->nr_hg_state;
+			for (unsigned int i = 0; i < count; i++) {
 				struct hg_state *state = &node->state[i];
 				struct hg_state *state0 = &node0->state[i];
 

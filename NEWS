@@ -5,6 +5,7 @@ procps-ng-NEXT
     internal: tolerate incomplete podman pid isolation     issue #442
     internal: reduce exposure to EACCES for 'environ'      issue #443
   * build: add libpthread if needed                        issue #434
+  * hugetop: Fix some memory safety issues                 issue #445
   * kill: Correct exit value for pgrp kills                issue #438
   * pgrep: Limit what items we need to query
   * pidof: -S '' uses NUL as separator                     issue #419

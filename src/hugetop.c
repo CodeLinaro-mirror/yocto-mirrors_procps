@@ -313,19 +313,25 @@ static void print_node(struct node_hg_states *node, int numa)
 
 	/* append ' 2.0Mi - xxx/yyy, 1.0Gi - mmm/nnn' */
 	for (unsigned int i = 0; i < node->nr_hg_state; i++) {
+		int extra;
+
 		state = &node->state[i];
 		if (bytes < 0 || (size_t)bytes >= cols)
 			break;
-		bytes += snprintf(line + bytes, cols - bytes, " %s - %ld/%ld",
+		extra = snprintf(line + bytes, cols - bytes, " %s - %ld/%ld",
 				scale_size(state->size, 3, 0, 1),
 				state->free_hugepages, state->nr_hugepages);
-		if (bytes < 0 || (size_t)bytes >= cols)
+		if (extra < 0 || extra >= cols - bytes)
 			break;
+                else
+                        bytes += extra;
 
 		if (i < node->nr_hg_state - 1) {
-			bytes += snprintf(line + bytes, cols - bytes, ",");
-			if (bytes < 0 || (size_t)bytes >= cols)
+			extra = snprintf(line + bytes, cols - bytes, ",");
+			if (extra < 0 || extra >= cols - bytes)
 				break;
+                        else
+                                bytes += extra;
 		}
 	}
 
